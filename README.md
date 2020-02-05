@@ -1,4 +1,3 @@
-学习中如需要帮助请联系：
 
 学习link:
 ## 20200128 36丨如何设计一个高扩展性的路由
@@ -13,33 +12,15 @@
  submenu.vue 中 === <a-icon v-if="item.meta.icon" :type="item.meta.icon" /> ===
  item引用错误
 
+学习中如需要帮助请联系：
+https://github.com/yaom2018/My-WareHouse/blob/master/pic/wechat_gzh.jpg
 
+
+======================================
 # ant-design-vue-pro
-
 ## Project setup
-```
 npm install
-```
-
 ### Compiles and hot-reloads for development
-```
 npm run serve
-```
-
 ### Compiles and minifies for production
-```
 npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
