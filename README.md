@@ -13,7 +13,7 @@
  item引用错误
 
 学习中如需要帮助请联系：
-https://github.com/yaom2018/My-WareHouse/blob/master/pic/wechat_gzh.jpg
+![Image text](https://github.com/yaom2018/My-WareHouse/blob/master/pic/wechat_gzh.jpg)
 
 
 ======================================
