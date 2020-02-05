@@ -1,6 +1,17 @@
+学习中如需要帮助请联系：
+
 学习link:
 ## 20200128 36丨如何设计一个高扩展性的路由
-
+## 20200206
+### 37丨实现一个可动态改变的页面布局 
+ 左上角菜单字体颜色始终是黑色，因为
+ BasicLayout.vue
+ === <div :class="[`nav-theme-${navTheme}`, `nav-layout-${navLayout}`]">===
+ 这里必须为 `
+### 38丨如何将菜单和路由结合.mp4 
+ 始终报错找不到meta，原因
+ submenu.vue 中 === <a-icon v-if="item.meta.icon" :type="item.meta.icon" /> ===
+ item引用错误
 
 
 # ant-design-vue-pro

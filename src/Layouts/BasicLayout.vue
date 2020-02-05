@@ -1,5 +1,5 @@
 <template>
-  <div :class="['nav-theme-${navTheme}', 'nav-Layout-${navLayout}']">
+  <div :class="[`nav-theme-${navTheme}`, `nav-layout-${navLayout}`]">
     <a-layout id="components-layout-demo-side" style="min-height: 100vh">
       <a-layout-sider
         v-if="navLayout === 'left'"
@@ -16,7 +16,7 @@
         <a-layout-header style="background: #fff; padding: 0">
           <a-icon
             class="trigger"
-            :type="collapsed ? 'menu-fold' : 'menu-unfold'"
+            :type="collapsed ? 'menu-unfold' : 'menu-fold'"
             @click="collapsed = !collapsed"
           ></a-icon>
           <Header />
@@ -35,9 +35,9 @@
 
 <script>
 import Header from "./Header";
-import Footer from "./Fooder";
+import Footer from "./Footer";
 import SiderMenu from "./SiderMenu";
-import SettingDrawer from "@/components/SettingDrawer";
+import SettingDrawer from "../components/SettingDrawer";
 
 export default {
   data() {
@@ -63,9 +63,6 @@ export default {
 </script>
 
 <style scoped>
-.nav-theme-dark >>> .logo {
-  color: #ffffff;
-}
 .trigger {
   padding: 0 20px;
   line-height: 64px;
@@ -79,5 +76,8 @@ export default {
   line-height: 64px;
   text-align: center;
   overflow: hidden;
+}
+.nav-theme-dark >>> .logo {
+  color: #ffffff;
 }
 </style>

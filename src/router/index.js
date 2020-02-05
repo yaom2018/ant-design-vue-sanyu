@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 import P404 from "../views/404.vue";
 import Nprogress from "nprogress";
 import "nprogress/nprogress.css";
@@ -10,14 +9,15 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/user",
+    hideInMenu: true,
     component: () =>
       import(
-        /* webpackChunkName: "layout" */ "../views/Layouts/UserLayout.vue"
+        /* webpackChunkName: "layout" */ "../Layouts/UserLayout.vue"
       ),
     children: [
       {
         path: "/user",
-        redirect: "/user/logiin"
+        redirect: "/user/login"
       },
       {
         path: "/user/login",
@@ -37,7 +37,7 @@ const routes = [
     path: "/",
     component: () =>
       import(
-        /* webpackChunkName: "layout" */ "../views/Layouts/BasicLayout.vue"
+        /* webpackChunkName: "layout" */ "../Layouts/BasicLayout.vue"
       ),
     children: [
       {
@@ -80,8 +80,8 @@ const routes = [
           {
             path: "/form/step-form",
             name: "stepform",
+            hideChildrenInMenu: true,
             meta: { title: "分布表单" },
-            hideChildrenMenu: true,
             component: () =>
               import(/* webpackChunkName: "form" */ "../views/Forms/StepForm"),
             children: [
@@ -124,20 +124,6 @@ const routes = [
     name: 404,
     hideInMenu: true,
     component: P404
-  },
-  {
-    path: "/",
-    name: "home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
   }
 ];
 

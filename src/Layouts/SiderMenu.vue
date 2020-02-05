@@ -5,10 +5,13 @@
       :defaultOpenKeys="['2']"
       mode="inline"
       :theme="theme"
-      :inlineCollapsed="collapsed"
     >
       <template v-for="item in menuData">
-        <a-menu-item v-if="!item.children" :key="item.path">
+        <a-menu-item
+          v-if="!item.children"
+          :key="item.path"
+          
+        >
           <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
           <span>{{ item.meta.title }}</span>
         </a-menu-item>
@@ -38,7 +41,6 @@ export default {
     const menuData = this.getMenuData(this.$router.options.routes);
     return {
       collapsed: false,
-      list: [],
       menuData
     };
   },
@@ -52,7 +54,7 @@ export default {
         if (item.name && !item.hideInMenu) {
           const newItem = { ...item };
           delete newItem.children;
-          if (item.collapsed && !item.hideChildrenInMenu) {
+          if (item.children && !item.hideChildrenInMenu) {
             newItem.children = this.getMenuData(item.children);
           }
           menuData.push(newItem);
@@ -61,7 +63,9 @@ export default {
           !item.hideChildrenInMenu &&
           item.children
         ) {
-          menuData.push(...this.getMenuData(item.children));
+          menuData.push(
+            ...this.getMenuData(item.children)
+          );
         }
       });
       console.log("============");

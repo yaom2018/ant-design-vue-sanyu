@@ -1,11 +1,14 @@
 <template functional>
   <a-sub-menu :key="props.menuInfo.path">
     <span slot="title">
-      <a-icon v-if="props.item.meta.icon" :type="props.item.meta.icon" /><span>{{ props.menuInfo.meta.title }}</span>
+      <a-icon 
+        v-if="props.menuInfo.meta.icon" 
+        :type="props.menuInfo.meta.icon" 
+      /><span>{{ props.menuInfo.meta.title }}</span>
     </span>
     <template v-for="item in props.menuInfo.children">
       <a-menu-item v-if="!item.children" :key="item.path">
-        <a-icon v-if="props.item.meta.icon" :type="props.item.meta.icon" />
+        <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
         <span>{{ item.meta.title }}</span>
       </a-menu-item>
       <sub-menu v-else :key="item.path" :menu-info="item" />
@@ -14,6 +17,6 @@
 </template>
 <script>
 export default {
-  props: ['menuInfo'],
+  props: ["menuInfo"]
 };
 </script>
