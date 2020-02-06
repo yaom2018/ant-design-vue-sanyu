@@ -12,6 +12,9 @@
  submenu.vue 中 === <a-icon v-if="item.meta.icon" :type="item.meta.icon" /> ===
  item引用错误
 
+ ### 41丨如何在组件中使用ECharts、Antv等其他第三方库.mp4
+ 生成动态图，39的权限管理
+
 学习中如需要帮助请联系：
 ![Image text](https://github.com/yaom2018/My-WareHouse/blob/master/pic/wechat_gzh.jpg)
 

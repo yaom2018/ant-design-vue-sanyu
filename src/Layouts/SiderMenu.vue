@@ -1,11 +1,6 @@
 <template>
   <div style="width: 256px">
-    <a-menu
-      :selectedKeys="selectedKeys"
-      :openKeys.sync="openKeys"
-      mode="inline"
-      :theme="theme"
-    >
+    <a-menu :selectedKeys="selectedKeys" :openKeys.sync="openKeys" mode="inline" :theme="theme">
       <template v-for="item in menuData">
         <a-menu-item
           v-if="!item.children"
@@ -27,11 +22,12 @@
  * SubMenu1.vue https://github.com/vueComponent/ant-design-vue/blob/master/components/menu/demo/SubMenu1.vue
  * */
 import SubMenu from "./SubMenu";
+import { check } from "../utils/auth";
 export default {
   props: {
     theme: {
       type: String,
-      default: "dark",
+      default: "dark"
     }
   },
   components: {
@@ -44,8 +40,8 @@ export default {
     }
   },
   data() {
-    this.selectedKeysMap = {}
-    this.openKeysMap = {}
+    this.selectedKeysMap = {};
+    this.openKeysMap = {};
     const menuData = this.getMenuData(this.$router.options.routes);
     return {
       collapsed: false,
@@ -60,21 +56,24 @@ export default {
     },
     getMenuData(routes = [], parentKeys = [], selectedKey) {
       const menuData = [];
-      routes.forEach(item => {
+      for (let item of routes) {
+        if (item.meta && item.meta.authority && !check(item.meta.authority)) {
+          break;
+        }
         if (item.name && !item.hideInMenu) {
           this.openKeysMap[item.path] = parentKeys;
           this.selectedKeysMap[item.path] = [selectedKey || item.path];
           const newItem = { ...item };
           delete newItem.children;
           if (item.children && !item.hideChildrenInMenu) {
-            newItem.children = this.getMenuData(item.children,[
+            newItem.children = this.getMenuData(item.children, [
               ...parentKeys,
               item.path
             ]);
-          }else{
+          } else {
             this.getMenuData(
               item.children,
-              selectedKey ? parentKeys : [...parentKeys,item.path],
+              selectedKey ? parentKeys : [...parentKeys, item.path],
               selectedKey || item.path
             );
           }
@@ -85,10 +84,10 @@ export default {
           item.children
         ) {
           menuData.push(
-            ...this.getMenuData(item.children,[...parentKeys,item.path])
+            ...this.getMenuData(item.children, [...parentKeys, item.path])
           );
         }
-      });
+      }
       console.log("============");
       console.log(menuData);
       console.log("============");
