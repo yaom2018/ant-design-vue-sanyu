@@ -13,6 +13,7 @@
         </div>
       </template>
       <div>
+<div>
         <h2>整体风格</h2>
         <a-radio-group
           :value="$route.query.navTheme || 'dark'"
@@ -30,6 +31,7 @@
           <a-radio value="top">顶部</a-radio>
         </a-radio-group>
       </div>
+</div>
     </a-drawer>
   </div>
 </template>
